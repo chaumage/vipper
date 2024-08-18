@@ -1,6 +1,4 @@
 # Prototyping behaviors for vpp components
 
-
-def main():
-    print("Hello")
+from .physics.boat import
 
