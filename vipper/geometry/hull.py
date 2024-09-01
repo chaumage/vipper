@@ -14,3 +14,6 @@ class SimpleHull(BaseModel):
     Tc: float  # Canoe body draft
     Tmax: float  # Maximum draft of yacht
     Amax: float  # Max section area
+    Boa: float  #
+    ff: float  #
+    fa: float  #

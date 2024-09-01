@@ -3,10 +3,10 @@ Concatenation of all singular models into a global boat model.
 """
 
 from dataclasses import dataclass
+from typing import Any, Optional, Protocol
+
 from geometry.boat import Boat
 from physics.context import Context
-
-from typing import Any, Optional, Protocol
 
 
 @dataclass
@@ -15,14 +15,14 @@ class Result:
     to allow for error as value kind of implementation"""
 
     ok: bool
-    msg: Optional[str] = None
+    msg: str = ""
     result: dict[str, Any] = {}
 
 
 class BoatModel(Protocol):
     """Calculates equilibrium state of a boat geometry in given sailing conditions and geometric position"""
 
-    def calculate(
+    def evaluate_equilibrium(
         self,
         TWA: float,
         TWS: float,
@@ -35,7 +35,8 @@ class BoatModel(Protocol):
         ...
 
     def parameters(self) -> dict[str, Any]:
-        pass
+        """Returns dict of additional parameters (trim, sail choice, etc)"""
+        ...
 
 
 def generate_boat_model(
